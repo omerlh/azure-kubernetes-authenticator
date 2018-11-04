@@ -7,7 +7,7 @@ const app = new http.Server();
 
 app.on('request', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.write(req);
+  res.write(JSON.stringify(req.headers));
   res.write('Hello World');
   res.end('\n');
 });
