@@ -7,8 +7,7 @@ const app = new http.Server();
 
 app.on('request', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.write(JSON.stringify(req.headers["x-ms-token-aad-id-token"]));
-  res.write('Hello World');
+  res.write(req.headers["x-ms-token-aad-id-token"]);
   res.end('\n');
 });
 
