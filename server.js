@@ -9,10 +9,11 @@ app.on('request', (req, res) => {
 
   const token = req.headers["x-ms-token-aad-id-token"];
 
-  res.writeHead(200, 
+  res.writeHead(302, 
     { 
       'Content-Type': 'text/plain',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${token}`,
+      'Location': 'https://dashboard-secondary.mysoluto.com'
     }
     );
   res.write('ok');
