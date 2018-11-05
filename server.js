@@ -7,7 +7,7 @@ const app = new http.Server();
 
 app.on('request', (req, res) => {
 
-  const token = req.headers["x-ms-token-aad-id-token"];
+  const token = req.headers["x-ms-token-aad-access-token"];
 
   res.writeHead(200, 
     { 
