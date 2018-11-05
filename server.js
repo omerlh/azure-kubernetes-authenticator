@@ -16,9 +16,15 @@ var proxy = httpProxy.createProxyServer({});
 var server = http.createServer(function(req, res) {
   const token = req.headers["x-ms-token-aad-id-token"];
   req.headers.Authorization = `Bearer ${token}`;
+ // req.headers.Host = 'dashboard-secondary.mysoluto.com';
   // You can define here your custom logic to handle the request
   // and then proxy the request.
-  proxy.web(req, res, { target: 'https://dashboard-secondary.mysoluto.com' });
+  proxy.web(req, res, { target: {
+    protocol: 'https:',
+    host: 'dashboard-secondary.mysoluto.com',
+    port: 443,
+  },
+  changeOrigin: true });
 });
  
 console.log(`listening on port ${port}`);
